@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.media.MediaPlayer;
 
 public class RtGWhatService extends Service {
 
@@ -27,11 +28,13 @@ public class RtGWhatService extends Service {
 		return START_STICKY;
 	}
 
+	/*
 	private String getRandomMood() {
 		Random r = new Random(Calendar.getInstance().getTimeInMillis());
 		int pos = r.nextInt(moods.size());
 		return moods.get(pos);
 	}
+	*/
 
 	private void playSound(Intent intent) {
 		Log.i(RtGWhatWidgetProvider.WIDGETTAG, "This is the intent " + intent);
@@ -45,7 +48,10 @@ public class RtGWhatService extends Service {
 
 				AppWidgetManager appWidgetMan = AppWidgetManager.getInstance(this);
 				RemoteViews views = new RemoteViews(this.getPackageName(),R.layout.widgetlayout);
-				views.setTextViewText(R.id.widgetMood, "yeah...");
+				//views.setTextViewText(R.id.widgetMood, "yeah...");
+				MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.catchphrase);
+				mp.start();
+				
 				appWidgetMan.updateAppWidget(widgetId, views);
 				
 				Log.i(RtGWhatWidgetProvider.WIDGETTAG, " RtGWhat updated!");

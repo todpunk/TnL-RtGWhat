@@ -21,7 +21,7 @@ public class RtGWhatWidgetProvider extends AppWidgetProvider {
 		final int N = appWidgetIds.length;
 		
 		// Perform this loop procedure for each App Widget that belongs to this provider
-		/* for (int i=0; i<N; i++) {
+		for (int i=0; i<N; i++) {
 			int appWidgetId = appWidgetIds[i];
 			
 			Log.i(WIDGETTAG, "updating widget[id] " + appWidgetId);
@@ -29,7 +29,8 @@ public class RtGWhatWidgetProvider extends AppWidgetProvider {
 			RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widgetlayout);
 			
 			Intent intent = new Intent(context, RtGWhatService.class);
-			intent.setAction(RtGWhatService.UPDATEMOOD);
+			//intent.setAction(RtGWhatService.UPDATEMOOD);
+			intent.setAction("foo");
 			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
 			PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, 0);
 		
@@ -38,6 +39,6 @@ public class RtGWhatWidgetProvider extends AppWidgetProvider {
 			
 			// Tell the AppWidgetManager to perform an update on the current App Widget
 			appWidgetManager.updateAppWidget(appWidgetId, views);
-		} */
+		}
 	}	
 }
